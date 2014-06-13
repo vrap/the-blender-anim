@@ -1,0 +1,113 @@
+@module1ViewPosition: (@module1Position - 15px);
+@module2ViewPosition: (@module2Position - 15px);
+@module3ViewPosition: (@module3Position - 15px);
+@module4ViewPosition: (@module4Position - 15px);
+@module5ViewPosition: (@module5Position - 15px);
+
+/* Déplacement horizontal du chariot */
+@keyframes cartSlide {
+    0% { 
+        left: 0;
+    }
+    23%, 27% { 
+        left: @module2ViewPosition;
+    }
+    48%, 52% {
+        left: @module4ViewPosition;
+    }
+    73%, 77% {
+        left: @module1ViewPosition;
+    }
+    100% {
+        left: @module5ViewPosition;
+    }
+}
+
+/* Déplacement horizontal du verre */
+@keyframes glassSlide {
+    0% { 
+        left: 0;
+        opacity: 0;
+    }
+    23%, 27% { 
+        left: @module2ViewPosition;
+        opacity: 1;
+    }
+    48%, 52% {
+        left: @module4ViewPosition;
+        opacity: 1;
+    }
+    73%, 77% {
+        left: @module1ViewPosition;
+        opacity: 1;
+    }
+    100% {
+        left: @module5ViewPosition;
+        opacity: 1;
+    }
+}
+
+/* Ecoulement du liquide dans la bouteille */
+@keyframes bottleFlow {  
+    /*0%, 10% {
+    height: 80%;
+    }
+    10%, 20% {
+    height: 79%;
+    }
+    20%, 30% {
+    height: 78%;
+    }
+    30%, 40% {
+    height: 77%;
+    }
+    40%, 50% {
+    height: 76%;
+    }
+    50%, 60% {
+    height: 75%;
+    }
+    60%, 70% {
+    height: 74%;
+    }
+    70%, 80% {
+    height: 73%;
+    }
+    80%, 90% {
+    height: 72%;
+    }
+    90%, 100% {
+    height: 71%;
+    }*/
+}
+
+/* Remplissage du verre */
+@keyframes glassFill {
+0%, 20% { 
+height: 0px; 
+border-width: 0px;
+}
+40% {
+height: 40px; 
+}
+80%, 100% { 
+height: 80px; 
+border-width: 5px;
+}
+}
+
+/* Vagues dans le liquide lors de l'écoulement du liquide dans la bouteille
+   et le remplissage du verre */
+@keyframes wave {
+    from {
+        transform: skew(0, -3deg);
+    }
+    to {
+        transform: skew(0, 3deg);
+    }
+}
+
+/* Clignotement des LEDs */
+@keyframes ledBlinking {
+    
+}

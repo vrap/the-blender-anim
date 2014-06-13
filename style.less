@@ -1,0 +1,282 @@
+@greenCocktail: rgba(64, 212, 126, 0.8);
+@orangeCocktail: rgba(243, 156, 18, 0.8);
+@blueCocktail: rgba(52, 152, 219, 0.8);
+@yellowCocktail: rgba(241, 196, 15, 0.8);
+
+@module1Position: 50px;
+@module2Position: 160px;
+@module3Position: 270px;
+@module4Position: 380px;
+@module5Position: 510px;
+
+@animationLength: 12s;
+
+.glassEffect(@sizeShadow) {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-right: @sizeShadow solid rgba(255, 255, 255, 0.2);
+}
+
+.pourer(@position, @cocktailColor, @cocktailHeight) {
+    height: 200px; width: 70px;
+    position: absolute;
+    bottom: 0; left: @position;
+    background-color: #AA6129;
+    border-right: solid 30px #603F25;
+
+    /* Plaque du fond du module */
+    &:after {
+        /*height: 220px; width: 0;*/
+        height: 220px; width: 81px;
+        position: absolute;
+        top: -220px; left: 16px;
+        /*border-right: solid 84px #8E562D;*/
+        background-color: #8E562D;
+        border-right: solid 3px #603F25;
+        content: '';
+    }
+
+    /* Bouteille */
+    .bottle {
+        .glassEffect(3px);
+
+        height: 200px; width: 64px;
+        position: absolute;
+        top: -210px; left: 17px;
+        z-index: 2;
+
+        /* Bouchon de bouteille */
+        &:before {
+            display: block;
+            height: 10px; width: 20px;
+            position: absolute;
+            top: 200px; left: 22px;
+            content: '';
+        }
+
+        /* Liquide dans le bouchon de bouteille */
+        &:after {
+            display: block;
+            height: 13px; width: 14px;
+            position: absolute;
+            margin: 0 4px;
+            top: 197px; left: 22px;
+            background-color: @cocktailColor;
+            content: '';                        
+        }
+
+        /* Liquide dans la bouteille */
+        .liquid {
+            height: @cocktailHeight; width: 58px;
+            position: absolute;
+            margin: 0 3px;
+            bottom: 3px;
+            background-color: @cocktailColor;
+            animation: cocktailDown 2s ease infinite;
+
+            &:after {
+                display: block;
+                width: 100%;
+                position: absolute;
+                background-color: white;
+                border-radius: 5px 5px 0 0;
+                content: '';
+                animation: wave 0.5s alternate infinite;
+            }
+        }
+    }
+
+    &:nth-child(1) {
+        .pump:after {
+            animation: pumpFlow1 @animationLength ease infinite;
+
+            @keyframes pumpFlow1 {
+                74%, 76% {
+                    height: 152px;
+                }
+                77%, 100% {
+                    height: 0;
+                }
+            }
+        }
+    }
+
+    /* Animations du liquide qui sort de la pompe */
+    &:nth-child(2) {
+        .pump:after {
+            animation: pumpFlow2 @animationLength ease 1.4s infinite;
+
+            @keyframes pumpFlow2 {
+                0% {
+                    height: 152px;
+                }
+                27%, 100% {
+                    height: 0;
+                }
+            }
+        }
+    }
+
+    &:nth-child(4) {
+        .pump:after {
+            animation: pumpFlow4 @animationLength ease infinite;
+
+            @keyframes pumpFlow4 {
+                49%, 51% {
+                    height: 152px;
+                }
+                52%, 100% {
+                    height: 0;
+                }
+            }
+        }
+    }
+
+    /* Axe vertical de la pompe */
+    .pump {
+        .glassEffect(2px);
+
+        height: 50px;  width: 8px;
+        position: absolute;
+        top: 30px; left: 16px;
+
+        /* Axe horizontal de la pompe */
+        &:before {
+            display: block;
+            height: 20px; width: 20px;
+            position: absolute;
+            top: -5px; left: 7px;
+            background: linear-gradient(to bottom, #CCD1D9 50%, #AAB2BD 50%);
+            border-radius: 0 10px 10px 0;
+            content: '';
+        }
+
+        /* Liquide qui sort de la pompe */
+        &:after {
+            display: block;
+            width: 6px;
+            position: absolute;
+            margin-top: 12px;
+            margin-left: 2px;
+            background-color: @cocktailColor;
+            border-radius: 0 0 5px 5px;
+            content: '';
+            /*animation: pumpFlow @animationLength ease infinite;*/
+        }
+    }
+
+    /* Axe de la pompe (rond) */
+    .pump-front {
+        height: 14px; width: 14px;
+        position: absolute;
+        top: 25px; left: 13px;
+        background-color: #F5F7FA;
+        border: solid 3px #CCD1D9;
+        border-radius: 10px;
+    }
+}
+
+.master(@position) {
+    height: 420px; width: 70px;
+    position: absolute;
+    bottom: 0; left: @position;
+    background-color: #AA6129;
+    border-right: solid 30px #603F25;
+
+    h2 {
+        margin: 10px 0;
+        font-size: 14px;
+        color: #603F25;
+    }
+
+    .led {
+        height: 5px; width: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        background: red;
+        border-right: 2px solid #777;
+        border-radius: 100%;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #E9573F;
+    text-align: center;
+  
+    h1 {
+        display: inline-block;
+        margin-top: 40px;
+        color: white;
+        border-top: solid 5px white;
+        border-bottom: solid 5px white;
+        transform: skew(0, -5deg);
+    }
+
+    section {
+        background-color: #FC6E51;
+
+        #action {
+            height: 480px; width: 670px;
+            position: relative;
+            margin: 0 auto;
+
+            .module {
+                &:nth-child(1) {
+                    .pourer(@module1Position, @greenCocktail, 20px);
+                }
+
+                &:nth-child(2) {
+                    .pourer(@module2Position, @orangeCocktail, 140px);
+                }
+
+                &:nth-child(3) {
+                    .pourer(@module3Position, @yellowCocktail, 66px);
+                }
+
+                &:nth-child(4) {
+                    .pourer(@module4Position, @blueCocktail, 90px);
+                }
+
+                &:nth-child(5) {
+                    .master(@module5Position);
+                }
+            }
+
+            /* Chariot */
+            #cart {
+                height: 6px; width: 100px;
+                position: absolute;
+                margin-left: -20px;
+                bottom: 0;
+                background-color: #7B614E;
+                border-right: 7px solid darken(#7B614E, 10%);
+                border-radius: 1px;
+                animation: cartSlide @animationLength ease infinite;
+            }
+
+            /* Verre */
+            #glass {
+                .glassEffect(4px);
+
+                height: 100px; width: 70px;
+                position: absolute;
+                bottom: 6px;
+                animation: glassSlide @animationLength ease infinite;
+
+                /* Cocktail dans le verre */
+                .cocktail {
+                    /*height: 80px;*/ width: 60px;
+                    position: absolute;
+                    margin: 0 3px 0 7px;
+                    bottom: 6px;
+                    background-color: rgba(255, 206, 84, 0.8);
+                    animation: glassFill @animationLength ease infinite;
+                }
+            }
+        }
+    }
+}
+
+@import 'animations.less';
