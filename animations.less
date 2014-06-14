@@ -6,16 +6,16 @@
 
 /* Déplacement horizontal du chariot */
 @keyframes cartSlide {
-    0% { 
+    0% {
         left: 0;
     }
-    23%, 27% { 
+    20%, 45% { 
         left: @module2ViewPosition;
     }
-    48%, 52% {
+    45%, 65% {
         left: @module4ViewPosition;
     }
-    73%, 77% {
+    65%, 75% {
         left: @module1ViewPosition;
     }
     100% {
@@ -25,25 +25,20 @@
 
 /* Déplacement horizontal du verre */
 @keyframes glassSlide {
-    0% { 
+    0% {
         left: 0;
-        opacity: 0;
     }
-    23%, 27% { 
+    20%, 45% { 
         left: @module2ViewPosition;
-        opacity: 1;
     }
-    48%, 52% {
+    45%, 65% {
         left: @module4ViewPosition;
-        opacity: 1;
     }
-    73%, 77% {
+    65%, 75% {
         left: @module1ViewPosition;
-        opacity: 1;
     }
     100% {
         left: @module5ViewPosition;
-        opacity: 1;
     }
 }
 
@@ -83,17 +78,25 @@
 
 /* Remplissage du verre */
 @keyframes glassFill {
-0%, 20% { 
-height: 0px; 
-border-width: 0px;
-}
-40% {
-height: 40px; 
-}
-80%, 100% { 
-height: 80px; 
-border-width: 5px;
-}
+    0% {
+        height: 0;
+    }
+    20%, 45% { 
+        height: 30px;
+        background-color: @redCocktail;
+    }
+    45%, 65% {
+        height: 60px;
+        background-color: @purpleCocktail;
+    }
+    65%, 75% {
+        height: 90px;
+        background-color: @purpleCocktail;
+    }
+    100% {
+        height: 90px;
+        background: linear-gradient(to bottom, @greenCocktail 0%, @purpleCocktail 25%);
+    }
 }
 
 /* Vagues dans le liquide lors de l'écoulement du liquide dans la bouteille
@@ -105,9 +108,4 @@ border-width: 5px;
     to {
         transform: skew(0, 3deg);
     }
-}
-
-/* Clignotement des LEDs */
-@keyframes ledBlinking {
-    
 }

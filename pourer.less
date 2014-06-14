@@ -1,0 +1,175 @@
+.pourer(@position, @cocktailColor, @cocktailHeight) {
+    height: 200px; width: 70px;
+    position: absolute;
+    bottom: 0; left: @position;
+    background-color: #AA6129;
+    border-right: solid 30px #603F25;
+
+    /* Plaque du fond du module */
+    &:after {
+        height: 220px; width: 81px;
+        position: absolute;
+        top: -220px; left: 16px;
+        background-color: #8E562D;
+        border-right: solid 3px #603F25;
+        content: '';
+    }
+
+    /* Bouteille */
+    .bottle {
+        .glassEffect(3px);
+
+        height: 200px; width: 64px;
+        position: absolute;
+        top: -210px; left: 17px;
+        z-index: 2;
+        border-radius: 1px 1px 20px 20px;
+
+        /* Liquide dans la bouteille */
+        &:after {
+            height: @cocktailHeight; width: 58px;
+            position: absolute;
+            margin: 0 2px 0 4px;
+            bottom: 3px; left: 0;
+            background-color: @cocktailColor;
+            border-radius: 1px 1px 17px 17px;
+            content: '';
+            animation: cocktailDown 2s ease infinite;
+        }
+
+        /* Bouchon de bouteille */
+        .cap {
+            .glassEffect(3px);
+
+            height: 10px; width: 18px;
+            position: absolute;
+            top: 200px; left: 23px;
+
+            /* Liquide dans le bouchon de bouteille */
+            &:after {
+                display: block;
+                height: 13px; width: 14px;
+                position: absolute;
+                margin: 0 3px;
+                bottom: 0;
+                background-color: @cocktailColor;
+                content: '';                 
+            }
+        }
+    }
+
+    &:nth-child(1) {
+        .pump:after {
+            animation: pumpFlow1 @animationLength step-start infinite;
+
+            @keyframes pumpFlow1 {
+                0% {
+                    height: 0;
+                }
+                20%, 45% { 
+                    height: 0;
+                }
+                45%, 65% {
+                    height: 0;
+                }
+                65%, 75% {
+                     height: 100px;
+                }
+                100% {
+                    height: 0;
+                }
+            }
+        }
+    }
+
+    /* Animations du liquide qui sort de la pompe */
+    &:nth-child(2) {
+        .pump:after {
+            animation: pumpFlow2 @animationLength step-start infinite;
+
+            @keyframes pumpFlow2 {
+                0% {
+                    height: 0;
+                }
+                20%, 45% { 
+                    height: 150px;
+                }
+                45%, 65% {
+                    height: 0;
+                }
+                65%, 75% {
+                    height: 0;
+                }
+                100% {
+                    height: 0;
+                }
+            }
+        }
+    }
+
+    &:nth-child(4) {
+        .pump:after {
+            animation: pumpFlow4 @animationLength step-start infinite;
+
+            @keyframes pumpFlow4 {
+                0% {
+                    height: 0;
+                }
+                20%, 45% { 
+                    height: 0;
+                }
+                45%, 65% {
+                    height: 120px;
+                }
+                65%, 75% {
+                    height: 0;
+                }
+                100% {
+                    height: 0;
+                }
+            }
+        }
+    }
+
+    /* Axe vertical de la pompe */
+    .pump {
+        .glassEffect(2px);
+
+        height: 50px;  width: 8px;
+        position: absolute;
+        top: 30px; left: 18px;
+
+        /* Axe horizontal de la pompe */
+        &:before {
+            display: block;
+            height: 20px; width: 20px;
+            position: absolute;
+            top: -5px; left: 6px;
+            background: linear-gradient(to bottom, #CCD1D9 50%, #AAB2BD 50%);
+            border-radius: 0 10px 10px 0;
+            content: '';
+        }
+
+        /* Liquide qui sort de la pompe */
+        &:after {
+            display: block;
+            width: 6px;
+            position: absolute;
+            margin-top: 12px;
+            margin-left: 2px;
+            background-color: @cocktailColor;
+            border-radius: 0 0 5px 5px;
+            content: '';
+        }
+    }
+
+    /* Axe de la pompe (rond) */
+    .pump-front {
+        height: 14px; width: 14px;
+        position: absolute;
+        top: 25px; left: 13px;
+        background-color: #F5F7FA;
+        border: solid 3px #CCD1D9;
+        border-radius: 10px;
+    }
+}
