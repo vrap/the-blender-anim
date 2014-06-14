@@ -50,14 +50,15 @@
                 display: block;
                 height: 13px; width: 14px;
                 position: absolute;
-                margin: 0 3px;
+                margin: 0 1px 0 3px;
                 bottom: 0;
                 background-color: @cocktailColor;
-                content: '';                 
+                content: '';
             }
         }
     }
 
+    /* Animations du liquide qui sort de la pompe */
     &:nth-child(1) {
         .pump:after {
             animation: pumpFlow1 @animationLength step-start infinite;
@@ -66,7 +67,7 @@
                 0% {
                     height: 0;
                 }
-                20%, 45% { 
+                20%, 45% {
                     height: 0;
                 }
                 45%, 65% {
@@ -91,7 +92,7 @@
                 0% {
                     height: 0;
                 }
-                20%, 45% { 
+                20%, 45% {
                     height: 150px;
                 }
                 45%, 65% {
@@ -107,6 +108,7 @@
         }
     }
 
+    /* Animations du liquide qui sort de la pompe */
     &:nth-child(4) {
         .pump:after {
             animation: pumpFlow4 @animationLength step-start infinite;
@@ -115,7 +117,7 @@
                 0% {
                     height: 0;
                 }
-                20%, 45% { 
+                20%, 45% {
                     height: 0;
                 }
                 45%, 65% {
