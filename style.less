@@ -44,19 +44,19 @@ body {
 
             .module {
                 &:nth-child(1) {
-                    .pourer(@module1Position, @greenCocktail, 20px);
+                    .pourer(@module1Position, @greenCocktail, 20%);
                 }
 
                 &:nth-child(2) {
-                    .pourer(@module2Position, @redCocktail, 140px);
+                    .pourer(@module2Position, @redCocktail, 90%);
                 }
 
                 &:nth-child(3) {
-                    .pourer(@module3Position, @yellowCocktail, 66px);
+                    .pourer(@module3Position, @yellowCocktail, 33%);
                 }
 
                 &:nth-child(4) {
-                    .pourer(@module4Position, @blueCocktail, 90px);
+                    .pourer(@module4Position, @blueCocktail, 52%);
                 }
 
                 &:nth-child(5) {
@@ -93,7 +93,7 @@ body {
                     margin: 0 1px 0 5px;
                     bottom: 3px;
                     border-radius: 1px 1px 12px 12px;
-                    animation: glassFill @animationLength ease infinite;
+                    animation: glassFill @animationLength ease-in infinite;
                 }
             }
         }

@@ -34,7 +34,6 @@
             background-color: @cocktailColor;
             border-radius: 1px 1px 17px 17px;
             content: '';
-            animation: cocktailDown 2s ease infinite;
         }
 
         /* Bouchon de bouteille */
@@ -48,9 +47,9 @@
             /* Liquide dans le bouchon de bouteille */
             &:after {
                 display: block;
-                height: 13px; width: 14px;
+                height: 13px; width: 12px;
                 position: absolute;
-                margin: 0 1px 0 3px;
+                margin: 0 2px 0 4px;
                 bottom: 0;
                 background-color: @cocktailColor;
                 content: '';
@@ -58,75 +57,100 @@
         }
     }
 
-    /* Animations du liquide qui sort de la pompe */
+    
     &:nth-child(1) {
+        /* Ecoulement du liquide dans la bouteille */
+        .bottle:after {
+            animation: bottleFlow1 @animationLength ease-in infinite;
+    
+            @keyframes bottleFlow1 {
+                0%, 61% {
+                    height: 20%;
+                }
+                62%, 100% {
+                    height: 10%;
+                }
+            }
+        }
+
+        /* Animations du liquide qui sort de la pompe */
         .pump:after {
-            animation: pumpFlow1 @animationLength step-start infinite;
+            animation: pumpFlow1 @animationLength ease-in infinite;
 
             @keyframes pumpFlow1 {
-                0% {
+                0%, 61% {
                     height: 0;
                 }
-                20%, 45% {
-                    height: 0;
+                62%, 74% {
+                    height: 100px;
                 }
-                45%, 65% {
-                    height: 0;
-                }
-                65%, 75% {
-                     height: 100px;
-                }
-                100% {
+                75%, 100% {
                     height: 0;
                 }
             }
         }
     }
 
-    /* Animations du liquide qui sort de la pompe */
     &:nth-child(2) {
+        /* Ecoulement du liquide dans la bouteille */
+        .bottle:after {
+            animation: bottleFlow2 @animationLength ease-in infinite;
+    
+            @keyframes bottleFlow2 {
+                0%, 15% {
+                    height: 90%;
+                }
+                16%, 100% {
+                    height: 85%;
+                }
+            }
+        }
+
+        /* Animations du liquide qui sort de la pompe */
         .pump:after {
-            animation: pumpFlow2 @animationLength step-start infinite;
+            animation: pumpFlow2 @animationLength ease-in infinite;
 
             @keyframes pumpFlow2 {
-                0% {
+                0%, 15% {
                     height: 0;
                 }
-                20%, 45% {
+                16%, 21% {
                     height: 150px;
                 }
-                45%, 65% {
-                    height: 0;
-                }
-                65%, 75% {
-                    height: 0;
-                }
-                100% {
+                22%, 100% {
                     height: 0;
                 }
             }
         }
     }
 
-    /* Animations du liquide qui sort de la pompe */
     &:nth-child(4) {
+        /* Ecoulement du liquide dans la bouteille */
+        .bottle:after {
+            animation: bottleFlow4 @animationLength ease-in infinite;
+    
+            @keyframes bottleFlow4 {
+                0%, 40% {
+                    height: 52%;
+                }
+                41%, 100% {
+                    height: 49%;
+                }
+            }
+        }
+
+        /* Animations du liquide qui sort de la pompe */
         .pump:after {
-            animation: pumpFlow4 @animationLength step-start infinite;
+            animation: pumpFlow4 @animationLength ease-in infinite;
 
             @keyframes pumpFlow4 {
-                0% {
+                0%, 40% {
                     height: 0;
                 }
-                20%, 45% {
-                    height: 0;
-                }
-                45%, 65% {
+                41%, 46% {
                     height: 120px;
                 }
-                65%, 75% {
-                    height: 0;
-                }
-                100% {
+                47%, 100% {
                     height: 0;
                 }
             }
